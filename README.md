@@ -1,6 +1,6 @@
 # ATLauncher-offline
 
-Clone of the official ATLauncher @ f2018a8c to learn about Minecraft internals
+Clone of the [official ATLauncher](https://github.com/ATLauncher/ATLauncher) @ f2018a8c to learn about Minecraft internals
 
 # Original Readme
 
