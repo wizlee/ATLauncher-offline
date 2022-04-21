@@ -405,14 +405,18 @@ public class MCLauncher {
         argument = argument.replace("${game_assets}", instance.getAssetsDir().getAbsolutePath());
         argument = argument.replace("${assets_root}", FileSystem.ASSETS.toAbsolutePath().toString());
         argument = argument.replace("${assets_index_name}", instance.getAssets());
-        argument = argument.replace("${auth_uuid}", UUIDTypeAdapter.fromUUID(account.getRealUUID()));
-        argument = argument.replace("${auth_access_token}", account.getAccessToken());
+        // argument = argument.replace("${auth_uuid}", UUIDTypeAdapter.fromUUID(account.getRealUUID()));
+        argument = argument.replace("${auth_uuid}", "auth_uuid");
+        // argument = argument.replace("${auth_access_token}", account.getAccessToken());
+        argument = argument.replace("${auth_access_token}", "auth_access_token");
         argument = argument.replace("${version_type}", instance.type.getValue());
         argument = argument.replace("${launcher_name}", Constants.LAUNCHER_NAME);
         argument = argument.replace("${launcher_version}", Constants.VERSION.toStringForLogging());
         argument = argument.replace("${natives_directory}", nativesDir);
-        argument = argument.replace("${user_type}", account.getUserType());
-        argument = argument.replace("${auth_session}", account.getSessionToken());
+        // argument = argument.replace("${user_type}", account.getUserType());
+        argument = argument.replace("${user_type}", "user_type");
+        // argument = argument.replace("${auth_session}", account.getSessionToken());
+        argument = argument.replace("${auth_session}", "auth_session");
         argument = argument.replace("${library_directory}", FileSystem.LIBRARIES.toAbsolutePath().toString());
         argument = argument.replace("${classpath}", classpath);
         argument = argument.replace("${classpath_separator}", File.pathSeparator);
@@ -430,14 +434,14 @@ public class MCLauncher {
             }
 
             argsString = argsString.replace(username, "REDACTED");
-            argsString = argsString.replace(account.uuid, "REDACTED");
+            // argsString = argsString.replace(account.uuid, "REDACTED");
         }
 
         if (props != null) {
             argsString = argsString.replace(props, "REDACTED");
         }
-        argsString = argsString.replace(account.getAccessToken(), "REDACTED");
-        argsString = argsString.replace(account.getSessionToken(), "REDACTED");
+        // argsString = argsString.replace(account.getAccessToken(), "REDACTED");
+        // argsString = argsString.replace(account.getSessionToken(), "REDACTED");
 
         return argsString;
     }

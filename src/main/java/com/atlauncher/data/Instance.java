@@ -740,15 +740,15 @@ public class Instance extends MinecraftVersion {
         final AbstractAccount account = launcher.account == null ? AccountManager.getSelectedAccount()
                 : AccountManager.getAccountByName(launcher.account);
 
-        if (account == null) {
-            DialogManager.okDialog().setTitle(GetText.tr("No Account Selected"))
-                    .setContent(new HTMLBuilder().center()
-                            .text(GetText.tr("Cannot play instance as you have no account selected.")).build())
-                    .setType(DialogManager.ERROR).show();
+        // if (account == null) {
+        //     DialogManager.okDialog().setTitle(GetText.tr("No Account Selected"))
+        //             .setContent(new HTMLBuilder().center()
+        //                     .text(GetText.tr("Cannot play instance as you have no account selected.")).build())
+        //             .setType(DialogManager.ERROR).show();
 
-            App.launcher.setMinecraftLaunched(false);
-            return false;
-        }
+        //     App.launcher.setMinecraftLaunched(false);
+        //     return false;
+        // }
 
         // if Microsoft account must login again, then make sure to do that
         if (!offline && account instanceof MicrosoftAccount && ((MicrosoftAccount) account).mustLogin) {
@@ -758,7 +758,8 @@ public class Instance extends MinecraftVersion {
             }
         }
 
-        String playerName = account.minecraftUsername;
+        // String playerName = account.minecraftUsername;
+        String playerName = "defaultUsername";
 
         if (offline) {
             playerName = DialogManager.okDialog().setTitle(GetText.tr("Offline Player Name"))
@@ -770,7 +771,8 @@ public class Instance extends MinecraftVersion {
             }
         }
 
-        final String username = offline ? playerName : account.minecraftUsername;
+        // final String username = offline ? playerName : account.minecraftUsername;
+        final String username = offline ? playerName : "defaultUsername";
 
         int maximumMemory = (this.launcher.maximumMemory == null) ? App.settings.maximumMemory
                 : this.launcher.maximumMemory;
@@ -938,6 +940,10 @@ public class Instance extends MinecraftVersion {
 
                     process = MCLauncher.launch(microsoftAccount, this, nativesTempDir, wrapperCommand, username);
                 }
+                else if (offline) {
+                    LogManager.info("Launching offline!");
+                    process = MCLauncher.launch(null, this, nativesTempDir, wrapperCommand, username);
+                }
 
                 if (process == null) {
                     LogManager.error("Failed to get process for Minecraft");
@@ -989,7 +995,7 @@ public class Instance extends MinecraftVersion {
                 String line;
                 int detectedError = 0;
 
-                String replaceUUID = account.uuid.replace("-", "");
+                // String replaceUUID = account.uuid.replace("-", "");
 
                 while ((line = br.readLine()) != null) {
                     if (line.contains("java.lang.OutOfMemoryError")
@@ -1013,15 +1019,15 @@ public class Instance extends MinecraftVersion {
                     }
 
                     if (!LogManager.showDebug) {
-                        line = line.replace(account.minecraftUsername, "**MINECRAFTUSERNAME**");
-                        line = line.replace(account.username, "**MINECRAFTUSERNAME**");
-                        line = line.replace(account.uuid, "**UUID**");
-                        line = line.replace(replaceUUID, "**UUID**");
+                        // line = line.replace(account.minecraftUsername, "**MINECRAFTUSERNAME**");
+                        // line = line.replace(account.username, "**MINECRAFTUSERNAME**");
+                        // line = line.replace(account.uuid, "**UUID**");
+                        // line = line.replace(replaceUUID, "**UUID**");
                     }
 
-                    if (account.getAccessToken() != null) {
-                        line = line.replace(account.getAccessToken(), "**ACCESSTOKEN**");
-                    }
+                    // if (account.getAccessToken() != null) {
+                    //     line = line.replace(account.getAccessToken(), "**ACCESSTOKEN**");
+                    // }
 
                     if (line.contains("log4j:")) {
                         try {
