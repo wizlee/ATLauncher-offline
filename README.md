@@ -1,4 +1,8 @@
-# ATLauncher
+# ATLauncher-offline
+
+Clone of the official ATLauncher @ f2018a8c to learn about Minecraft internals
+
+# Original Readme
 
 ![Application](https://github.com/ATLauncher/ATLauncher/workflows/Application/badge.svg?branch=master)
 [![Discord](https://discordapp.com/api/guilds/117047818136322057/embed.png?style=shield)](https://atl.pw/discord)
