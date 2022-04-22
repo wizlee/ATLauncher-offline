@@ -759,17 +759,17 @@ public class Instance extends MinecraftVersion {
         }
 
         // String playerName = account.minecraftUsername;
-        String playerName = "defaultUsername";
+        String playerName = "explorer";
 
-        if (offline) {
-            playerName = DialogManager.okDialog().setTitle(GetText.tr("Offline Player Name"))
-                    .setContent(GetText.tr("Choose your offline player name:")).showInput(playerName);
+        // if (offline) {
+        //     playerName = DialogManager.okDialog().setTitle(GetText.tr("Offline Player Name"))
+        //             .setContent(GetText.tr("Choose your offline player name:")).showInput(playerName);
 
-            if (playerName == null || playerName.isEmpty()) {
-                LogManager.info("No player name provided for offline launch, so cancelling launch.");
-                return false;
-            }
-        }
+        //     if (playerName == null || playerName.isEmpty()) {
+        //         LogManager.info("No player name provided for offline launch, so cancelling launch.");
+        //         return false;
+        //     }
+        // }
 
         // final String username = offline ? playerName : account.minecraftUsername;
         final String username = offline ? playerName : "defaultUsername";

@@ -375,40 +375,41 @@ public class Launcher {
     }
 
     private void checkForLauncherUpdate() {
-        PerformanceManager.start();
+        return;
+        // PerformanceManager.start();
 
-        LogManager.debug("Checking for launcher update");
-        if (launcherHasUpdate()) {
-            if (App.noLauncherUpdate) {
-                int ret = DialogManager.okDialog().setTitle("Launcher Update Available")
-                        .setContent(new HTMLBuilder().center().split(80).text(GetText.tr(
-                                "An update to the launcher is available. Please update via your package manager or manually by visiting https://atlauncher.com/downloads to get the latest features and bug fixes."))
-                                .build())
-                        .addOption(GetText.tr("Visit Downloads Page")).setType(DialogManager.INFO).show();
+        // LogManager.debug("Checking for launcher update");
+        // if (launcherHasUpdate()) {
+        //     if (App.noLauncherUpdate) {
+        //         int ret = DialogManager.okDialog().setTitle("Launcher Update Available")
+        //                 .setContent(new HTMLBuilder().center().split(80).text(GetText.tr(
+        //                         "An update to the launcher is available. Please update via your package manager or manually by visiting https://atlauncher.com/downloads to get the latest features and bug fixes."))
+        //                         .build())
+        //                 .addOption(GetText.tr("Visit Downloads Page")).setType(DialogManager.INFO).show();
 
-                if (ret == 1) {
-                    OS.openWebBrowser("https://atlauncher.com/downloads");
-                }
+        //         if (ret == 1) {
+        //             OS.openWebBrowser("https://atlauncher.com/downloads");
+        //         }
 
-                return;
-            }
+        //         return;
+        //     }
 
-            if (!App.wasUpdated) {
-                downloadUpdate(); // Update the Launcher
-            } else {
-                DialogManager.okDialog().setTitle("Update Failed!")
-                        .setContent(new HTMLBuilder().center()
-                                .text(GetText.tr("Update failed. Please click Ok to close "
-                                        + "the launcher and open up the downloads page.<br/><br/>Download "
-                                        + "the update and replace the old " + Constants.LAUNCHER_NAME + " file."))
-                                .build())
-                        .setType(DialogManager.ERROR).show();
-                OS.openWebBrowser("https://atlauncher.com/downloads");
-                System.exit(0);
-            }
-        }
-        LogManager.debug("Finished checking for launcher update");
-        PerformanceManager.end();
+        //     if (!App.wasUpdated) {
+        //         downloadUpdate(); // Update the Launcher
+        //     } else {
+        //         DialogManager.okDialog().setTitle("Update Failed!")
+        //                 .setContent(new HTMLBuilder().center()
+        //                         .text(GetText.tr("Update failed. Please click Ok to close "
+        //                                 + "the launcher and open up the downloads page.<br/><br/>Download "
+        //                                 + "the update and replace the old " + Constants.LAUNCHER_NAME + " file."))
+        //                         .build())
+        //                 .setType(DialogManager.ERROR).show();
+        //         OS.openWebBrowser("https://atlauncher.com/downloads");
+        //         System.exit(0);
+        //     }
+        // }
+        // LogManager.debug("Finished checking for launcher update");
+        // PerformanceManager.end();
     }
 
     /**
